@@ -1,0 +1,2 @@
+module HollasHelper
+end

@@ -1,0 +1,13 @@
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to holla.username, holla.user %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+       <%= distance_of_time_in_words(Time.now, holla.created_at)%> ago </h6>
+    <p class="card-text"> <%= holla.body %> </p>
+  </div>
+  <%= image_tag (url_for(holla.image)) , class: "card-img-bottom img-responsive" %>
+  <div class="card-footer">
+    footer
+  </div>
+</div>

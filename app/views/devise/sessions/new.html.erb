@@ -1,0 +1,33 @@
+<div class="container d-flex justify-content-center">
+
+  <div class="card card-themed text-white shadow-lg text-center m-5 p-3">
+    <div class="card-body text-center mt-3">
+      <h1 class="card-title display-6 lead text-center text-white m-3"> Sign In </h1>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :login %>
+        <%= f.text_field :login, autofocus: true, autocomplete: "username", class: 'form-control m-3', placeholder: 'username or email' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: 'password' ,class:'form-control m-3'%>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me%>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: 'btn btn-outline-light m-3' %>
+      </div>
+    <% end %>
+
+</div>
+</div>
+</div>

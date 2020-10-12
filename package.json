@@ -1,0 +1,26 @@
+{
+  "name": "no_more_lonely_terps",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@popperjs/core": "^2.4.4",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "^6.0.3-3",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.3.0",
+    "autoprefixer": "^10.0.0",
+    "bootstrap": "^5.0.0-alpha1",
+    "jquery": "^3.5.1",
+    "masonry-layout": "^4.2.2",
+    "popper.js": "^1.16.1",
+    "postcss": "^8.0.2",
+    "trix": "^1.2.0",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.0.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
+}

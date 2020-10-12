@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>No More Lonely Terps</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+      .modal {
+        color: purple;
+      }
+      .card-themed {
+        background-image: linear-gradient(to right, #A4214D 0%, #2C27FF 100%);
+      }
+      .btn-primary {
+          background-image: linear-gradient(to right, #A4214D 0%, #2C27FF 100%);
+      }
+      img {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+        align-self: center;
+      }
+      div.sticky-bottom {
+        position: sticky;
+        bottom: 0;
+          background-image: linear-gradient(to right, #A4214D 0%, #2C27FF 100%);
+
+        padding: 0px;
+        font-size: 20px;
+      }
+      .nav>.active, .nav>.hover{
+        background-image: linear-gradient(to right, #A4214D 0%, #2C27FF 100%);
+        color: white;
+        }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg  navbar-dark sticky-top" style="background-image: linear-gradient(to right, #A4214D 0%, #2C27FF 100%);">
+   <div class="container-fluid">
+     <%= link_to 'Holla!', root_path, class: 'navbar-brand display-6 lead '%>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+         <%= link_to 'Mingle', users_path, class: 'nav-link'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Groups', root_path, class: 'nav-link'%>
+        </li>
+      </ul>
+      <p class="navbar-text float-right text-white">
+        <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+      </p>
+    </nav>
+
+    <div class="container-fluid">
+      <% if notice %>
+        <p class="alert alert-primary m-3"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger m-3"><%= alert %></p>
+          <% end %>
+        </div>
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+
+  </body>
+</html>
