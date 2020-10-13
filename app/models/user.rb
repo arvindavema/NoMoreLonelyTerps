@@ -10,10 +10,20 @@ class User < ApplicationRecord
 
 
   has_many :hollas
-
+  has_many :events
+  has_many :likes
+  has_many :hates
 
   def login
     @login || self.user_name || self.email
+  end
+
+  def hates?(holla)
+    self.hates.find_by(holla_id: holla.id)
+  end
+
+  def likes?(holla)
+    self.likes.find_by(holla_id: holla.id)
   end
 
   def self.find_for_database_authentication warden_condition

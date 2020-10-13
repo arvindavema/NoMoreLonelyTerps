@@ -1,13 +1,47 @@
 
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><%= link_to holla.username, holla.user %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">
-       <%= distance_of_time_in_words(Time.now, holla.created_at)%> ago </h6>
-    <p class="card-text"> <%= holla.body %> </p>
+<%= link_to holla do %>
+<div class="card border-primary mt-3 shadow-lg rounded">
+  <div class="card-header"><%= link_to holla.username, holla.user,class:'nav-link float-left' %>
+    <%=link_to 'open post >>' , holla, class:'nav-link float-right'%>
   </div>
-  <%= image_tag (url_for(holla.image)) , class: "card-img-bottom img-responsive" %>
+
+  <div class="card-body">
+    <p class="card-text mt-3"> <%= holla.body %> </p>
+
+  </div>
+    <% if holla.image.attached? %>
+    <div class='container-fluid'>
+    <%= image_tag (url_for(holla.image)) , class: "card-img-bottom img-responsive border-primary p-3" %>
+    </div>
+    <%end%>
   <div class="card-footer">
-    footer
+    <div class="btn-group float-left mt-3" role="group" aria-label="Basic outlined example">
+
+      <%= link_to like_holla_path(holla), method: :put, class: "btn btn-outline-primary text-center" do %>
+        <i class="fas fa-thumbs-up fa-lg"></i>
+        <span> <%= holla.likes.size %> </span>
+      <% end %>
+
+      <%= link_to hate_holla_path(holla), method: :put, class: "btn btn-outline-primary text-center" do %>
+      <i class="fas fa-hand-middle-finger fa-lg"></i>
+        <span> <%= holla.hates.size %> </span>
+      <% end %>
+
+      <%= link_to root_path, class: "btn btn-outline-primary text-center" do %>
+        <i class="fas fa-comment fa-lg"></i>
+        <span>0</span>
+      <% end %>
+      <%= link_to root_path, class: "btn btn-outline-primary" do %>
+        <i class="fas fa-share fa-lg text-center"></i>
+        <span>0</span>
+      <% end %>
+
+    </div>
+    <p class=" text-muted lead font-italic font-weight-lighter float-right">
+      <%= distance_of_time_in_words(Time.now, holla.created_at)%> ago
+    </p>
+
   </div>
 </div>
+
+<% end %>

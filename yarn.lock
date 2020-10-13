@@ -3223,6 +3223,11 @@ fstream@^1.0.0, fstream@^1.0.12:
     mkdirp ">=0.5 0"
     rimraf "2"
 
+fullcalendar@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/fullcalendar/-/fullcalendar-5.3.2.tgz#9603ac9dd372de8546dc50ec9dc03317c08ddf87"
+  integrity sha512-yoNPnz51so+nWV+Ge/X1NECsTy+viP6nhHgRql5U3WvV7XL09yDIWXSCcuEaU4C/0ZmpUApgZ+e7wvWB0TYwRA==
+
 function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
@@ -4073,6 +4078,11 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jquery-ui-dist@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui-dist/-/jquery-ui-dist-1.12.1.tgz#5c0815d3cc6f90ff5faaf5b268a6e23b4ca904fa"
+  integrity sha1-XAgV08xvkP9fqvWyaKbiO0ypBPo=
+
 jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
@@ -4626,6 +4636,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+momentjs@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/momentjs/-/momentjs-2.0.0.tgz#73df904b4fa418f6e3c605e831cef6ed5518ebd4"
+  integrity sha1-c9+QS0+kGPbjxgXoMc727VUY69Q=
 
 move-concurrently@^1.0.1:
   version "1.0.1"

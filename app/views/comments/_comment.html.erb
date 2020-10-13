@@ -1,0 +1,45 @@
+<div class="card shadow-lg mb-3">
+  <div class="card-header">
+    <h3 class='float-left lead'>
+      <% if comment.loop_count > 0 %>
+      <small class='text-muted font-italic'>replying to @<%=Comment.find_by_id(comment.commentable_id).author_name %></small>
+      <% end %>
+
+      <%= link_to user_path(comment.user_id), class:'nav-link' do %>
+        <span> @<%=comment.author_name%> </span>
+      <% end %>
+    </h3>
+    <p class="float-right text-muted"> <%= time_ago_in_words(comment.created_at) %> ago</p>
+
+ </div>
+ <div class="card-body">
+
+   <p class='card-text mb-3'><%= comment.body %></p>
+
+     <%= form_for [comment, Comment.new] do |f| %>
+     <div class="row">
+       <div class="col-9">
+         <div class='form-field mb-3'>
+           <%= f.text_field :body, placeholder: "Add a Reply",class: 'form-control' %>
+         </div>
+       </div>
+       <div class='col-3'>
+         <button type="submit" class="btn btn-primary text-center mb-3">Reply!</button>
+       </div>
+     </div>
+     <% end %>
+   </div>
+   <div class='row'>
+     <div class='col-1'>
+
+     </div>
+     <div class='col-11'>
+       <div class='container-fluid mb-3'>
+         <%= render comment.get_limited_replies %>
+         <% if comment.comments.size > 10 %>
+            <%= link_to 'More Replies >>', comment_path(comment), class: 'btn btn-primary mb-3'%>
+         <%end%>
+       </div>
+     </div>
+   </div>
+  </div>

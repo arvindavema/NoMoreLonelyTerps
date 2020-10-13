@@ -1,6 +1,6 @@
 class HollasController < ApplicationController
-  before_action :set_holla, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit,:update,:destroy]
+  before_action :set_holla, only: [:show, :edit, :update, :destroy, :like, :hate]
+  before_action :authenticate_user!, only: [:create, :edit,:update,:destroy, :like, :hate]
   # GET /hollas
   # GET /hollas.json
   def index
@@ -62,6 +62,25 @@ class HollasController < ApplicationController
     end
   end
 
+  def like
+
+    if current_user.likes.exists?(holla_id: @holla.id)
+      current_user.likes.find_by(holla_id: @holla.id).destroy
+    else
+      Like.create!(user_id: current_user.id, holla_id: @holla.id)
+    end
+    redirect_to root_path
+  end
+
+  def hate
+
+    if current_user.hates.exists?(holla_id: @holla.id)
+      current_user.hates.find_by(holla_id: @holla.id).destroy
+    else
+      Hate.create!(user_id: current_user.id, holla_id: @holla.id)
+    end
+    redirect_to root_path
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_holla

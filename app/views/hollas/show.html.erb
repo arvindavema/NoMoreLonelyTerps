@@ -1,3 +1,35 @@
 
-<%= render @holla %>
-<%= link_to 'Back', root_path %>
+<div class='container-fluid m-3'>
+
+<div class="card border-primary mb-3 shadow-lg rounded">
+
+  <div class="card-body mb-3">
+    <p class="card-text mb-3"> @<%= @holla.body %> </p>
+  </div>
+    <% if @holla.image.attached? %>
+      <%= image_tag (url_for(@holla.image)) , class: "card-img-bottom img-responsive" %>
+    <%end%>
+  </div>
+
+</div>
+
+<div class='container-fluid mb-3'>
+
+<h3 class='display-4 lead text-center mb-3'>Comments</h3>
+
+<%= form_for [@holla, Comment.new] do |f| %>
+
+    <div class='form-group'>
+      <%= f.text_field :body, placeholder: "Comment",class: 'form-control mb-3 text-center' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Leave a Comment!", class: 'btn btn-primary form-control mb-3' %>
+    </div>
+<% end %>
+
+<div class='container-fluid mb-3'>
+  <%= render @holla.comments.sorted.limit(20) %>
+</div>
+
+</div>

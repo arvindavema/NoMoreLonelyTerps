@@ -3,6 +3,10 @@ class Holla < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  has_many :likes
+  has_many :hates
+
+  has_many :comments, as: :commentable
   def posted_at
     self.humanize_elapsed(Time.now - self.created_at)
   end

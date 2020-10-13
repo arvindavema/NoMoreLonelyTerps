@@ -57,3 +57,6 @@ gem 'simple_form'
 gem 'font_awesome5_rails'
 gem 'acts_as_list'
 gem "actiontext", require: "action_text"
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem 'acts_as_favoritor'
