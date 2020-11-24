@@ -3,8 +3,8 @@ class Holla < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  has_many :likes
-  has_many :hates
+  has_many :likes, dependent: :destroy 
+  has_many :hates, dependent: :destroy
 
   has_many :comments, as: :commentable
   def posted_at
