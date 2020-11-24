@@ -1,5 +1,24 @@
 # NoMoreLonelyTerps
 
+## Setting this up on your computer: 
+### Windows / Ubuntu 
+1) Ensure you have wsl and Ubuntu20.04 LTS set up
+2) in Ubuntu, set up your username and password
+3) sudo apt update && sudo apt upgrade
+#### Installing Ruby 2.7.1 using rvm
+
+    $ sudo apt install curl g++ gcc autoconf automake bison libc6-dev libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev
+    $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+    $ curl -sSL https://get.rvm.io | bash -s stable
+    $ source ~/.rvm/scripts/rvm
+    $ rvm install ruby-2.7.1
+    $ sudo apt-get install git nodejs gcc make libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev g++ libpq-dev
+
+
+
+git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
+
+
 ## Overview
 The social changes occurring as a result of COVID-19 have inspired me to try and develop a simple social network that Terps can use to find and interact with other terps!. Two major factors have pushed me to start this project.
 
