@@ -1,18 +1,19 @@
 class User < ApplicationRecord
+  has_friendship
 
   attr_writer :login
 
   validates :user_name, presence: true , format: {with: /\A[a-zA-Z0-9]+\z/}, length: {in: 1..12}, uniqueness: {case_sensitive: false}
 
-  validates :email, format: {with: /\A\S*@terpmail\.umd\.edu\z/, message:': you must provide your terpmail.umd.edu email! You can change your email later!'}
+  validates :email, format: {with: /\A\S*@terpmail\.umd\.edu\z/, message:'you must provide your terpmail.umd.edu email! You can change your email later!'}
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
 
-  has_many :hollas
-  has_many :events
-  has_many :likes
-  has_many :hates
+  has_many :hollas, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :hates, dependent: :destroy
 
   def login
     @login || self.user_name || self.email

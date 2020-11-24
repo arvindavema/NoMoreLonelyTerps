@@ -60,3 +60,4 @@ gem "actiontext", require: "action_text"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'acts_as_favoritor'
+gem 'has_friendship'

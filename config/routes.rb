@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         resources :comments
       end
       member do
+        patch :like
+        patch :hate
         put :like
         put :hate
       end

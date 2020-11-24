@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_083800) do
+ActiveRecord::Schema.define(version: 2020_11_24_223208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,17 @@ ActiveRecord::Schema.define(version: 2020_10_13_083800) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "friendships", id: :serial, force: :cascade do |t|
+    t.string "friendable_type"
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "blocker_id"
+    t.integer "status"
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
+  end
+
   create_table "hates", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "holla_id", null: false
@@ -97,6 +108,24 @@ ActiveRecord::Schema.define(version: 2020_10_13_083800) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "link_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "target_id", null: false
+    t.boolean "accepted", default: false, null: false
+    t.boolean "declined", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_link_requests_on_user_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "target_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -119,4 +148,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_083800) do
   add_foreign_key "hollas", "users"
   add_foreign_key "likes", "hollas"
   add_foreign_key "likes", "users"
+  add_foreign_key "link_requests", "users"
+  add_foreign_key "links", "users"
 end

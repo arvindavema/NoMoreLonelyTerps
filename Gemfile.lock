@@ -95,6 +95,11 @@ GEM
       momentjs-rails (>= 2.9.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    has_friendship (1.1.8)
+      activemodel (>= 4.2.0, < 6.1)
+      activerecord (>= 4.2.0, < 6.1)
+      activesupport (>= 4.2.0, < 6.1)
+      stateful_enum
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.0)
@@ -204,6 +209,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stateful_enum (0.6.0)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -247,6 +253,7 @@ DEPENDENCIES
   devise
   font_awesome5_rails
   fullcalendar-rails
+  has_friendship
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.2)
