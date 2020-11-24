@@ -2,18 +2,13 @@
 
 ## Setting this up on your computer: 
 ### Windows / Ubuntu 
-1) Ensure you have wsl and Ubuntu20.04 LTS set up
-2) in Ubuntu, set up your username and password
-3) sudo apt update && sudo apt upgrade
+Ensure you have windows set up with wsl and ubuntu all set up as well. For help please follow the instructions at https://docs.microsoft.com/en-us/windows/wsl/install-win10 . Ignore wsl2 installation steps and make sure you install Ubuntu20.04 LTS. Then run:    
+
+    sudo apt update && sudo apt upgrade
+
+
 #### Installing Ruby 2.7.1 using rvm
-
-    $ sudo apt install curl g++ gcc autoconf automake bison libc6-dev libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev
-    $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-    $ curl -sSL https://get.rvm.io | bash -s stable
-    $ source ~/.rvm/scripts/rvm
-    $ rvm install ruby-2.7.1
-    $ sudo apt-get install git nodejs gcc make libssl-dev libreadline-dev zlib1g-dev libsqlite3-dev g++ libpq-dev
-
+This app requires Ruby version 2.7.1. I coded this using ruby that I installed using the Ruby Version Manager(rvm). Follow the instructions in https://gorails.com/setup/ubuntu/20.04#ruby-rvm and install Ruby-2.7.1.
 
 
 git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
