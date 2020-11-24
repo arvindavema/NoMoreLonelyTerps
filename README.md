@@ -24,3 +24,22 @@ I aim to add a direct messaging feature along with general chatrooms that a User
 ## Initial page if user is not logged in:
 
 ![Image of HOME](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HOME.PNG)
+
+## Sign Up Page
+
+![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/SignUp.PNG)
+
+## Sign Up Validation at Work
+Notice that the sign up email has to end with "terpmail.umd.edu". This is to make the site Terp exclusive.
+
+![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/SignUpFailure.PNG)
+
+## Home Page After Successful Sign Up:
+
+![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HomePageOnSignIn.PNG)
+
+
+## On Click of Post! button, User is redirected to "New Post" page:
+### currently at most one image can be uploaded per post via the "Choose File" button.
+
+![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/OnPostButtonClick.PNG)
