@@ -6,13 +6,51 @@ Ensure you have windows set up with wsl and ubuntu all set up as well. For help 
 
     sudo apt update && sudo apt upgrade
 
+#### Installing Prerequisites: 
 
-#### Installing Ruby 2.7.1 using rvm
+##### Installing Ruby 2.7.1 using rvm
 This app requires Ruby version 2.7.1. I coded this using ruby that I installed using the Ruby Version Manager(rvm). Follow the instructions in https://gorails.com/setup/ubuntu/20.04#ruby-rvm and install Ruby-2.7.1.
 
 
-git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
+##### Install Nodejs    
 
+    curl -sL https://deb.nodesource.com/setup_12.x |sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+##### Install Yarn    
+
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo 'deb https://dl.yarnpkg.com/debian/ stable main' | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt install yarn
+    yarn install --check-files
+    
+##### Install Postgresql (version 12):    
+
+     sudo apt-get install postgresql libpq-dev
+     sudo -u postgres createuser --interactive
+      
+    
+Set op Postgresql with your own username and password. Remember yout credentials for later! 
+
+#### Finally:    
+    
+    git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
+    cd NoMoreLonelyTerps 
+    
+##### Edit Database: 
+Find all the places in config/database.yml that says username: or password: and replace the fields with your postgresql user's username and password. Then run:    
+
+    rake db:setup
+    rake db:migrate
+    
+##### Start the server: 
+run:    
+
+    rails s
+    
+    
+Then open http://localhost:3000/ in your prefered browser. 
+    
 
 ## Overview
 The social changes occurring as a result of COVID-19 have inspired me to try and develop a simple social network that Terps can use to find and interact with other terps!. Two major factors have pushed me to start this project.
