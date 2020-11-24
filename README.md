@@ -32,14 +32,35 @@ I aim to add a direct messaging feature along with general chatrooms that a User
 ## Sign Up Validation at Work
 Notice that the sign up email has to end with "terpmail.umd.edu". This is to make the site Terp exclusive.
 
-![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/SignUpFailure.PNG)
+![Image of SignUpFail](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/SignUpFailure.PNG)
 
 ## Home Page After Successful Sign Up:
 
-![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HomePageOnSignIn.PNG)
+![Image of HomeAfterSignIn](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HomePageOnSignIn.PNG)
 
 
 ## On Click of Post! button, User is redirected to "New Post" page:
-### currently at most one image can be uploaded per post via the "Choose File" button.
+Currently, at most one image can be uploaded per post via the "Choose File" button. The goal is to have at most 4 images per post.
 
-![Image of SignUp](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/OnPostButtonClick.PNG)
+![Image of OnPostButtonClick](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/OnPostButtonClick.PNG)
+
+
+## Post Page:  
+When a post is successfully created, the user is redirected to the post's page.
+
+### Post view:
+The post is displayed at the top of the page with a comment section underneath it.
+
+![Image of OnPostCreate](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/OnPostCreate.PNG)
+
+### Comment Section:
+
+Upon scrolling down, you will find a comment section. Comments are only visible on the post's page. They do not show on user feeds or home feeds.
+
+![Image of Comments](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/PostComments.PNG)
+
+# User Feed / Home tabs
+
+The User's Home tab is identical to their Feed tab except the User's friends' posts are included under the user's "Feed" tab while only the User's own posts are shown under the Home tab. Posts are chronologically sorted with newest at the top of either pages.
+
+![Image of HomePageWithMultPosts](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HomePageWithMultPosts.PNG)
