@@ -1,14 +1,73 @@
 # NoMoreLonelyTerps
-
-## Overview
+# Backstory: 
 The social changes occurring as a result of COVID-19 have inspired me to try and develop a simple social network that Terps can use to find and interact with other terps!. Two major factors have pushed me to start this project.
 
-### 1) Posts I constantly see on Reddit or Twitter
+## 1) Posts I constantly see on Reddit or Twitter
 Every time I open r/UMD or twitter I always see multiple posts about loneliness, depression or requests to hangout or game together.
 
-### 2) My Brother's Freshman Year vs My Freshman Year  
+## 2) My Brother's Freshman Year vs My Freshman Year  
 My Brother is currently a Freshman in College and he has been at Home for the entirety of the semester. He has not made any new friends and he has no one to hang out with besides other people from his high school that decided to stay at home. When I was a Freshman I was lucky enough to live in the Dorms at UMD and during that year, it is safe to say that I've established life long friendships and connections with people I have never met before. This blaring disparity between my experiences and my brother's is hard to just sit back and watch. I thought this was the time to try to do something about it and here we are.
 
+# Setting this up on your computer: 
+## Windows / Ubuntu 
+Ensure you have windows set up with wsl and ubuntu all set up as well. For help please follow the instructions at https://docs.microsoft.com/en-us/windows/wsl/install-win10 . Ignore wsl2 installation steps and make sure you install Ubuntu20.04 LTS. Then run:    
+
+    sudo apt update && sudo apt upgrade
+
+### Installing Prerequisites: 
+
+#### Installing Ruby 2.7.1 using rvm
+This app requires Ruby version 2.7.1. I coded this using ruby that I installed using the Ruby Version Manager(rvm). Follow the instructions in https://gorails.com/setup/ubuntu/20.04#ruby-rvm and install Ruby-2.7.1.
+
+
+#### Install Nodejs    
+
+    curl -sL https://deb.nodesource.com/setup_12.x |sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+#### Install Yarn    
+
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo 'deb https://dl.yarnpkg.com/debian/ stable main' | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo apt install yarn
+    yarn install --check-files
+    
+#### Install Postgresql (version 12):    
+
+     sudo apt-get install postgresql libpq-dev
+     sudo -u postgres createuser --interactive
+      
+    
+Set op Postgresql with your own username and password. Remember yout credentials for later! 
+
+#### Install rails and other gems:    
+
+     gem install rails -v 6.0.3.4
+     gem install bundler:2.1.4
+     gem install pg
+     
+
+### Finally:    
+    
+    git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
+    cd NoMoreLonelyTerps 
+    bundle install    
+    
+    
+#### Setup Postgresql Database: 
+Find all the places in config/database.yml that says username: or password: and replace the fields with your postgresql user's username and password. Then run:    
+
+    rake db:setup
+    rake db:migrate
+    
+#### Start the server: 
+run:    
+     
+    rails s
+    
+    
+Then open http://localhost:3000/ in your prefered browser. 
+    
 # ToDo
 ## 1. Create Friends and friendships
 I need to create a graph like structure where the nodes are Users and the edges are friendships
