@@ -32,12 +32,21 @@ This app requires Ruby version 2.7.1. I coded this using ruby that I installed u
     
 Set op Postgresql with your own username and password. Remember yout credentials for later! 
 
+##### Install rails and other gems:    
+
+     gem install rails -v 6.0.3.4
+     gem install bundler:2.1.4
+     gem install pg
+     
+
 #### Finally:    
     
     git clone https://github.com/arvindavema/NoMoreLonelyTerps.git
     cd NoMoreLonelyTerps 
+    bundle install    
     
-##### Edit Database: 
+    
+##### Setup Postgresql Database: 
 Find all the places in config/database.yml that says username: or password: and replace the fields with your postgresql user's username and password. Then run:    
 
     rake db:setup
@@ -45,7 +54,7 @@ Find all the places in config/database.yml that says username: or password: and 
     
 ##### Start the server: 
 run:    
-
+     
     rails s
     
     
