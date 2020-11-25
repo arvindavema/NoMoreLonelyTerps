@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   scope :sorted, -> { order(created_at: :desc) }
-
+  
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
 

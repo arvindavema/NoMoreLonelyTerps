@@ -1,39 +1,32 @@
 Rails.application.routes.draw do
-  resources :events
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'home/index'
+  devise_for :users
+  root controller: :home, action: :index
 
-  root 'home#index'
-
-  resources :hollas, only: :show do
-    resources :comments do
-      resources :comments
-    end
-
-    member do
-      patch :like
-      patch :hate
-      put :like
-      put :hate
-    end
-  end
+  get 'chat', to: 'chat#index', as: 'chat'
+  get 'market', to: 'market#index', as: 'market'
+  
+  resources :rooms
+  resources :room_msgs
 
   resources :comments do
      resources :comments
   end
+
+  resources :hollas, only: :show do
+    resources :comments
+    member do
+      patch :like
+      put :like
+    end
+  end
+
   resources :users, path: :terps do
+    resources :room_msgs
     resources :hollas do
       resources :comments do
         resources :comments
       end
-      member do
-        patch :like
-        patch :hate
-        put :like
-        put :hate
-      end
     end
-    resources :events
   end
-  devise_for :users
+
 end

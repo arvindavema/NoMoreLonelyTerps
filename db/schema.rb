@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_223208) do
+ActiveRecord::Schema.define(version: 2020_11_25_100932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,16 +59,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_223208) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "date"
-    t.string "time"
-    t.boolean "public"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
   create_table "friendships", id: :serial, force: :cascade do |t|
     t.string "friendable_type"
     t.integer "friendable_id"
@@ -78,15 +68,6 @@ ActiveRecord::Schema.define(version: 2020_11_24_223208) do
     t.integer "blocker_id"
     t.integer "status"
     t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
-  end
-
-  create_table "hates", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "holla_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["holla_id"], name: "index_hates_on_holla_id"
-    t.index ["user_id"], name: "index_hates_on_user_id"
   end
 
   create_table "hollas", force: :cascade do |t|
@@ -108,22 +89,23 @@ ActiveRecord::Schema.define(version: 2020_11_24_223208) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "link_requests", force: :cascade do |t|
+  create_table "room_msgs", force: :cascade do |t|
+    t.bigint "room_id", null: false
     t.bigint "user_id", null: false
-    t.integer "target_id", null: false
-    t.boolean "accepted", default: false, null: false
-    t.boolean "declined", default: false, null: false
+    t.text "msg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_link_requests_on_user_id"
+    t.index ["room_id"], name: "index_room_msgs_on_room_id"
+    t.index ["user_id"], name: "index_room_msgs_on_user_id"
   end
 
-  create_table "links", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "target_id", null: false
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_links_on_user_id"
+    t.boolean "public", default: true, null: false
+    t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -142,12 +124,9 @@ ActiveRecord::Schema.define(version: 2020_11_24_223208) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "events", "users"
-  add_foreign_key "hates", "hollas"
-  add_foreign_key "hates", "users"
   add_foreign_key "hollas", "users"
   add_foreign_key "likes", "hollas"
   add_foreign_key "likes", "users"
-  add_foreign_key "link_requests", "users"
-  add_foreign_key "links", "users"
+  add_foreign_key "room_msgs", "rooms"
+  add_foreign_key "room_msgs", "users"
 end

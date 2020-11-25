@@ -3,10 +3,9 @@ class Holla < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  has_many :likes, dependent: :destroy 
-  has_many :hates, dependent: :destroy
+  has_many :likes, dependent: :destroy, inverse_of: :holla
+  has_many :comments, as: :commentable, dependent: :destroy
 
-  has_many :comments, as: :commentable
   def posted_at
     self.humanize_elapsed(Time.now - self.created_at)
   end

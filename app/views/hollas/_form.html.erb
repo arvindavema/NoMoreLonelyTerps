@@ -1,11 +1,12 @@
 
+<div class="card card-themed text-white shadow-lg text-center m-5 p-3">
 <%= form_with(model: [current_user, current_user.hollas.build],local: true) do |f| %>
-
   <div class="form-group">
-    <%= f.text_area :body , class: 'form-control mt-3' %>
+    <%= f.text_area :body , class: 'form-control mt-3', placeholder: "Post Body..." %>
   </div>
   <div class="form-group">
-    <%= f.file_field :image, class: 'form-control mt-3'%>
+    <%= f.file_field :image, class: 'form-control mt-3', placeholder: "Add Image..."%>
   </div>
-  <button type="submit" class="btn btn-primary text-center mt-3">Holla!</button>
+  <button type="submit" class="btn btn-primary text-center mt-3">Post!</button>
 <% end %>
+</div>

@@ -1,0 +1,19 @@
+<%= link_to 'Create A Chat Room', new_room_path, class: 'btn btn-primary m-3 text-center'%>
+
+<h3 class="text-muted text-center mb-0">
+  Rooms
+</h3>
+
+<hr class="mt-1">
+
+<% if @rooms.present? %>
+  <nav class="nav flex-column text-center">
+    <% @rooms.each do |room| %>
+      <%= link_to room.name, room_path(room), class: 'nav-link room-nav-link' %>
+    <% end %>
+  </nav>
+<% else %>
+  <div class="text-muted">
+    The are no rooms
+  </div>
+<% end %>

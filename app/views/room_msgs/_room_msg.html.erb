@@ -1,0 +1,21 @@
+<div class="chat-message-container">
+  <div class="row no-gutters">
+    <div class="col-auto text-center">
+      <img src="<%= gravatar_url(room_message.user) %>" class="avatar" alt="">
+    </div>
+
+    <div class="col">
+      <div class="message-content">
+        <p class="mb-1">
+          <%= room_message.message %>
+        </p>
+
+        <div class="text-right">
+          <small>
+            <%= room_message.created_at %>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

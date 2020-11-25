@@ -1,6 +1,6 @@
 class HollasController < ApplicationController
-  before_action :set_holla, only: [:show, :edit, :update, :destroy, :like, :hate]
-  before_action :authenticate_user!, only: [:create, :edit,:update,:destroy, :like, :hate]
+  before_action :set_user, except: [:index, :show]
+  before_action :set_holla, except: [:index, :new, :create]
   # GET /hollas
   # GET /hollas.json
   def index
@@ -24,8 +24,8 @@ class HollasController < ApplicationController
   # POST /hollas
   # POST /hollas.json
   def create
-    @holla = current_user.hollas.new(holla_params)
-    @holla.username = current_user.user_name
+    @holla = @user.hollas.new(holla_params)
+    @holla.username = @user.user_name
 
     respond_to do |format|
       if @holla.save
@@ -55,38 +55,45 @@ class HollasController < ApplicationController
   # DELETE /hollas/1
   # DELETE /hollas/1.json
   def destroy
-    @holla.destroy
-    respond_to do |format|
-      format.html { redirect_to hollas_url, notice: 'Holla was successfully destroyed.' }
-      format.json { head :no_content }
+    if @user
+      if @holla.user == @user
+        @holla.destroy
+        respond_to do |format|
+          format.html { redirect_to hollas_url, notice: 'Holla was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      else
+        render js: "alert('You dont own this post!')"
+      end
+    else
+      render js: "alert('You need to be signed in in order to do that!')"
     end
+
   end
 
   def like
+    if @user
 
-    if current_user.likes.exists?(holla_id: @holla.id)
-      current_user.likes.find_by(holla_id: @holla.id).destroy
-    else
-      Like.create!(user_id: current_user.id, holla_id: @holla.id)
+      post = @user.likes?(@holla)
+      if post
+        post.destroy
+      else
+        Like.create!(user: @user, holla: @holla)
+      end
     end
+
     redirect_to root_path
   end
 
-  def hate
-
-    if current_user.hates.exists?(holla_id: @holla.id)
-      current_user.hates.find_by(holla_id: @holla.id).destroy
-    else
-      Hate.create!(user_id: current_user.id, holla_id: @holla.id)
-    end
-    redirect_to root_path
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_holla
       @holla = Holla.find(params[:id])
     end
 
+    def set_user
+      @user = user_signed_in? ? current_user : nil
+    end
     # Only allow a list of trusted parameters through.
     def holla_params
       params.require(:holla).permit(:body, :image)

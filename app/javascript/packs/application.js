@@ -2,17 +2,15 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-
+import "jquery"
+import 'bootstrap'
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import 'jquery'
-import 'popper.js'
-import 'bootstrap'
+require("jquery")
+require("packs/room")
 import '../stylesheets/application'
-import './_custom.js'
-import "@fortawesome/fontawesome-free/js/all";
 
 //= require moment
 //= require fullcalendar
@@ -23,20 +21,3 @@ import "@fortawesome/fontawesome-free/js/all";
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-require("trix")
-require("@rails/actiontext")
-require("jquery-ui")
-require("moment")
-require("fullcalendar")
-function eventCalendar() {
-  return $('#calendar').fullCalendar({ });
-};
-function clearCalendar() {
-  $('#calendar').fullCalendar('delete');
-  $('#calendar').html('');
-};
-$(document).on('turbolinks:load', function(){
-  eventCalendar();
-});
-$(document).on('turbolinks:before-cache', clearCalendar);
