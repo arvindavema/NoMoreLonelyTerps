@@ -122,5 +122,5 @@ The User's Home tab is identical to their Feed tab except the User's friends' po
 # Chat with friends! 
 The website has a primitive chat function where users within a chat room can chat with eachother in real time!
 
-![Image of OnPostCreate](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/chat.PNG)
+![Image of chat](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/chat.PNG)
 
