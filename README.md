@@ -69,14 +69,9 @@ run:
 Then open http://localhost:3000/ in your prefered browser. 
     
 # ToDo
-## 1. Create Friends and friendships
-I need to create a graph like structure where the nodes are Users and the edges are friendships
 
-## 2. Friends posts
+## 1. Friends posts
 Add Users' Friends' posts to Users' feeds along with the Users' posts
-
-## 3. Chat
-I aim to add a direct messaging feature along with general chatrooms that a User can create or enter
 
 # So Far:
 
@@ -123,3 +118,9 @@ Upon scrolling down, you will find a comment section. Comments are only visible 
 The User's Home tab is identical to their Feed tab except the User's friends' posts are included under the user's "Feed" tab while only the User's own posts are shown under the Home tab. Posts are chronologically sorted with newest at the top of either pages.
 
 ![Image of HomePageWithMultPosts](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/HomePageWithMultPosts.PNG)
+
+# Chat with friends! 
+The website has a primitive chat function where users within a chat room can chat with eachother in real time!
+
+![Image of OnPostCreate](https://github.com/arvindavema/NoMoreLonelyTerps/blob/master/screenshots/chat.PNG)
+
