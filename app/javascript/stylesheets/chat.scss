@@ -1,8 +1,6 @@
 // Place all the styles related to the ChatRoom controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-
 .room-nav-link {
   border: 1px solid lighten($primary, 40%);
   background: lighten($primary, 45%);
@@ -15,19 +13,44 @@
 .chat {
   border: 1px solid lighten($secondary, 40%);
   background: lighten($secondary, 50%);
-   height: 70vh;
+  height: 70vh;
   border-radius: 5px 5px 0 0;
   overflow-y: auto;
 
-  .chat-message-container {
+  .recieve-chat-message-container{
+    width: 60%;
     padding: 5px;
 
     .avatar {
-      max-height:30px;
-      border-radius: 50%;
-      width:auto;
-      vertical-align:middle;
+    //   max-height:30px;
+    //   border-radius: 50%;
+    //   width:auto;
+    //   vertical-align:middle;
+     }
+
+    .message-content {
+      padding: 5px;
+      border: 1px solid $primary;
+      border-radius: 5px;
+      background: #f2686f;
+      color: $white;
     }
+
+    & + .chat-message-container {
+      margin-top: 10px;
+    }
+  }
+
+  .sent-chat-message-container {
+    width: 60%;
+    padding: 5px;
+
+    .avatar {
+    //   max-height:30px;
+    //   border-radius: 50%;
+    //   width:auto;
+    //   vertical-align:middle;
+     }
 
     .message-content {
       padding: 5px;

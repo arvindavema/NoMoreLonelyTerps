@@ -1,18 +1,18 @@
 
 <div class='container-fluid my-5'>
-  <%= link_to "<< Back to Parent Post", holla_path(@comment.holla_id), class:"btn btn-primary btn-lg btn-block" %>
+  <%= link_to "Parent Post", holla_path(@comment.holla_id), class:"btn btn-primary" %>
 </div>
 <div class='container-fluid mt-3'>
 <div class="card shadow-lg my-3">
   <div class="card-header">
     <h3 class='float-left lead'>
-      <% if@comment.loop_count > 0 %>
+    <%= link_to user_path(@comment.user_id), class:'nav-link' do %>
+        <span> @<%=@comment.author_name%> </span>
+    <% end %>
+      <% if @comment.loop_count > 0 %>
       <small class='text-muted font-italic'>replying to @<%=Comment.find_by_id(@comment.commentable_id).author_name %></small>
       <% end %>
 
-      <%= link_to user_path(@comment.user_id), class:'nav-link' do %>
-        <span> @<%=@comment.author_name%> </span>
-      <% end %>
     </h3>
     <p class="float-right text-muted"> <%= time_ago_in_words(@comment.created_at) %> ago</p>
 

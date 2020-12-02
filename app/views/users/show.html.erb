@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='container-fluid m-3'>
+  <h1><%= @target.user_name %> Profile </h1>
+  <p> <%= @user.user_name %> is current user </p>
+  <p>Find me in app/views/users/show.html.erb </p>
+  <% if @user.friends_with?(@target) || @user.pending_friends.include?(@target) %>
+    <button type="button" class="btn btn-lg btn-primary" disabled>Friends</button>
+  <% else %>
+    <%= link_to "Send Friend Request", send_request_user_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

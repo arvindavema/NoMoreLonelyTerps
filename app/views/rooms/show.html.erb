@@ -11,28 +11,51 @@
   <div class="col">
     <div class="chat my-3" data-channel-subscribe="room" data-room-id="<%= @room.id %>">
       <% @room_msgs.each do |room_message| %>
+        <% if room_message.user == @user %>
+          <div class="sent-chat-message-container float-right">
+            <div class="row no-gutters">
+              <div class="col-auto text-center">
+                <% image_tag "fountain.jpg", class: "avatar", alt: "Avatar" %>
+              </div>
+              <div class="col">
+                <div class="message-content">
+                  <h5><%= room_message.user.user_name %> </h5>
+                  <p class="mb-1">
+                    <%= room_message.msg %>
+                  </p>
 
-        <div class="chat-message-container">
-          <div class="row no-gutters">
-            <div class="col-auto text-center">
-              <!-- <img src="" class="avatar" alt="" data-role="user-avatar"> -->
-            </div>
-            <div class="col">
-              <div class="message-content">
-                <h5><%= room_message.user.user_name %> </h5>
-                <p class="mb-1">
-                  <%= room_message.msg %>
-                </p>
-
-                <div class="text-right">
-                  <small>
-                    <%= room_message.created_at %>
-                  </small>
+                  <div class="text-right">
+                    <small>
+                      <%= room_message.created_at %>
+                    </small>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        <%else%>
+        <div class="recieve-chat-message-container float-left">
+          <div class="row no-gutters">
+            <div class="col-auto text-center">
+              <% image_tag "fountain.jpg", class: "avatar", alt: "Avatar" %>
+            </div>
+            <div class="col">
+            <div class="message-content">
+              <h5><%= room_message.user.user_name %> </h5>
+              <p class="mb-1">
+                <%= room_message.msg %>
+              </p>
+
+              <div class="text-right">
+                <small>
+                  <%= room_message.created_at %>
+                </small>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+        <%end%>
       <% end %>
     </div>
     <%= simple_form_for @room_msg, remote: true do |form| %>

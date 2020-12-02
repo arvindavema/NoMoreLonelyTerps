@@ -1,36 +1,61 @@
 <div class='container-fluid m-3'>
+  <div class="card border-primary m-3 shadow-lg rounded">
+    <div class="card-header">
+      <%= link_to "@#{@holla.user.user_name}" , @holla.user,class:'nav-link float-left' %>
+    </div>
 
-  <div class="card border-primary mb-3 shadow-lg rounded">
-
-    <div class="card-body mb-3">
-      <p class="card-text mb-3"> @<%= @holla.body %> </p>
+    <div class="card-body">
+      <p class="card-text mt-3"> <%= @holla.body %> </p>
     </div>
 
     <% if @holla.image.attached? %>
-      <%= image_tag (url_for(@holla.image)) , class: "card-img-bottom img-responsive" %>
+      <div class='container-fluid'>
+        <%= image_tag (url_for(@holla.image)) , class: "card-img-bottom img-responsive border-primary p-3" %>
+      </div>
     <%end%>
-  </div>
 
+    <div class="card-footer">
+      <div class="btn-group float-left mt-3" role="group" aria-label="Basic outlined example">
+
+        <%= link_to like_holla_path(@holla), method: :put, class: "btn btn-outline-primary text-center" do %>
+          <i class="fas fa-thumbs-up fa-lg"></i>
+          <span> <%= @holla.likes.size %> </span>
+        <% end %>
+
+        <%= link_to root_path, class: "btn btn-outline-primary text-center" do %>
+          <i class="fas fa-comment fa-lg"></i>
+          <span>0</span>
+        <% end %>
+
+        <%= link_to root_path, class: "btn btn-outline-primary" do %>
+          <i class="fas fa-share fa-lg text-center"></i>
+          <span>0</span>
+        <% end %>
+
+      </div>
+
+      <p class=" text-muted lead font-italic font-weight-lighter float-right">
+        <%= distance_of_time_in_words(Time.now, @holla.created_at)%> ago
+      </p>
+    </div>
+
+  </div>
 </div>
 
 <div class='container-fluid mb-3'>
-
-  <h3 class='display-4 lead text-center mb-3'>Comments</h3>
+  <h3 class='display-4 lead text-center mb-3'> Comments </h3>
 
   <%= form_for [@holla, Comment.new] do |f| %>
-
     <div class='form-group'>
-      <%= f.text_field :body, placeholder: "Comment",class: 'form-control mb-3 text-center' %>
+      <%= f.text_field :body, placeholder: "Comment", class: 'form-control mb-3 text-center' %>
     </div>
-
     <div class="actions">
       <%= f.submit "Leave a Comment!", class: 'btn btn-primary form-control mb-3' %>
     </div>
-
   <% end %>
 
   <div class="container-fluid mb-3">
-    <%= render @holla.comments.sorted.limit(20) %>
+    <%= render @comments %>
   </div>
 
 </div>

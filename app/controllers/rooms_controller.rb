@@ -50,7 +50,7 @@ class RoomsController < ApplicationController
 
   private
   def load_room
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:id]) if params[:id]
   end
 
   def load_user

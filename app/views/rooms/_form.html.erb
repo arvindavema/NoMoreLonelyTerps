@@ -3,13 +3,12 @@
   <div class="card card-themed text-white shadow-lg align-middle rounded m-5">
     <div class="card-body text-center text-white m-3">
       <h1 class="card-title display-6 lead text-center text-white m-3"> New Chat Room: </h1>
-      
-      <%= simple_form_for(@room) do |f| %>
+
+      <%= simple_form_for @room do |f| %>
       <%= f.input :name, placeholder: 'A unique name for your room' %>
       <%= f.input :public, as: :boolean, checked_value: false, unchecked_value: true, inline_label: 'Make Room private'%>
       <%= f.button :submit, class: 'btn btn-primary' %>
-      <%= form.input :owner_id, as: :hidden %>
-
+      <%= f.input :owner_id, as: :hidden %>
       <% end %>
     </div>
   </div>

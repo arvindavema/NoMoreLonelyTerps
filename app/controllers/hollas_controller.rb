@@ -1,5 +1,5 @@
 class HollasController < ApplicationController
-  before_action :set_user, except: [:index, :show]
+  before_action :set_user
   before_action :set_holla, except: [:index, :new, :create]
   # GET /hollas
   # GET /hollas.json
@@ -10,6 +10,8 @@ class HollasController < ApplicationController
   # GET /hollas/1
   # GET /hollas/1.json
   def show
+    @comment = @holla.comments.new user_id: @user.id
+    @comments = @holla.comments.sorted.limit(20)
   end
 
   # GET /hollas/new
@@ -81,7 +83,7 @@ class HollasController < ApplicationController
         Like.create!(user: @user, holla: @holla)
       end
     end
-
+    
     redirect_to root_path
   end
 

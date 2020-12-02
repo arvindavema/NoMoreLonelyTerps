@@ -1,9 +1,7 @@
-
-<%= link_to holla do %>
   <div class="card border-primary m-3 shadow-lg rounded">
-
-    <div class="card-header"><%= link_to holla.username, holla.user,class:'nav-link float-left' %>
-      <%=link_to 'open post >>' , holla, class:'nav-link float-right'%>
+    <div class="card-header">
+      <%= link_to "@#{holla.user.user_name}" , holla.user,class:'nav-link float-left' %>
+      <%=link_to 'open post' , holla, class:'btn btn-primary float-right stretched-link'%>
     </div>
 
     <div class="card-body">
@@ -42,5 +40,3 @@
     </div>
 
   </div>
-
-<% end %>
